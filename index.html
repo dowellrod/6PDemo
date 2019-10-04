@@ -43,24 +43,132 @@
 </head>
 <body>
 
-<h1>Hue Selector</h1>
+<h1>Red</h1>
 
 <div class="slidecontainer">
-  <input type="range" min="0" max="359" value="0" class="slider" id="myRange">
-  <p>Value: <span id="demo"></span></p>
+  <input type="range" min="0" max="255" value="255" class="slider" id="myRange">
+  <!--<p>Value: <span id="demo"></span></p>-->
+</div>
+
+<h1>Green</h1>
+
+<div class="slidecontainer">
+  <input type="range" min="0" max="255" value="255" class="slider" id="myRange2">
+  <!--<p>Value: <span id="demo2"></span></p>-->
+</div>
+
+<h1>Blue</h1>
+
+<div class="slidecontainer">
+  <input type="range" min="0" max="255" value="255" class="slider" id="myRange3">
+  <!--<p>Value: <span id="demo3"></span></p>-->
+</div>
+
+<h1>Cyan</h1>
+
+<div class="slidecontainer">
+  <input type="range" min="0" max="255" value="255" class="slider" id="myRange4">
+  <!--<p>Value: <span id="demo4"></span></p>-->
+</div>
+
+<h1>Magenta</h1>
+
+<div class="slidecontainer">
+  <input type="range" min="0" max="255" value="255" class="slider" id="myRange5">
+  <!--<p>Value: <span id="demo5"></span></p>-->
+</div>
+
+<h1>Yellow</h1>
+
+<div class="slidecontainer">
+  <input type="range" min="0" max="255" value="255" class="slider" id="myRange6">
+  <!--<p>Value: <span id="demo6"></span></p>-->
 </div>
 
 <script>
 var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
+/*var output = document.getElementById("demo");
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
   output.innerHTML = this.value;
-}
-</script>
+}*/
 
-<script type="text/javascript" src="sketch.js"></script>
+var slider2 = document.getElementById("myRange2");
+/*var output2 = document.getElementById("demo2");
+output2.innerHTML = slider2.value;
+
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}*/
+
+var slider3 = document.getElementById("myRange3");
+/*var output3 = document.getElementById("demo3");
+output3.innerHTML = slider3.value;
+
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+}*/
+
+var slider4 = document.getElementById("myRange4");
+/*var output4 = document.getElementById("demo4");
+output4.innerHTML = slider4.value;
+
+slider4.oninput = function() {
+  output4.innerHTML = this.value;
+}*/
+
+var slider5 = document.getElementById("myRange5");
+/*var output5 = document.getElementById("demo5");
+output5.innerHTML = slider5.value;
+
+slider5.oninput = function() {
+  output5.innerHTML = this.value;
+}*/
+
+var slider6 = document.getElementById("myRange6");
+/*var output6 = document.getElementById("demo6");
+output6.innerHTML = slider6.value;
+
+slider6.oninput = function() {
+  output6.innerHTML = this.value;
+}*/
+
+var r = new Rune({
+  container: "body",
+  width: 600,
+  height: 600,
+  debug: true
+});
+
+// Draw the color scheme
+var square1 = r.rect(0, 0, 200, 300);
+var square2 = square1.copy().move(200, 0);
+var square3 = square1.copy().move(400, 0);
+var square4 = square1.copy().move(0, 300);
+var square5 = square1.copy().move(200, 300);
+var square6 = square1.copy().move(400, 300);
+
+// If we want to be fancy, we can change the base hue
+// by moving the mouse around.
+
+r.on('update', function() {
+var red = slider.value;
+var green = slider2.value;
+var blue = slider3.value;
+var cyan = slider4.value;
+var magenta = slider5.value;
+var yellow = slider6.value
+square1.fill(parseFloat(red), 0, 0);
+square2.fill(0, parseFloat(green), 0);
+square3.fill(0, 0, parseFloat(blue));
+square4.fill(parseFloat(255) - parseFloat(cyan), 255, 255);
+square5.fill(255, parseFloat(255) - parseFloat(magenta), 255);
+square6.fill(255, 255, parseFloat(255) - parseFloat(yellow));
+});
+
+r.play();
+</script>
 
 </body>
 </html>
